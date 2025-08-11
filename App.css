@@ -1,0 +1,141 @@
+.App {
+    margin: 0%;
+    padding: 0%;
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  App     ^^^^^^^ */
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #000;
+    margin: 8px;
+
+}
+.logo{
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 4.9rem;
+}
+.logo>img{
+    height: 100px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+.navitems{
+    padding-right: 4.9rem;
+
+}
+.navitems >ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+}
+.navitems>ul>li{
+    margin: 10px;
+    padding: 10px;
+    list-style-type: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: bolder;
+    letter-spacing: 10%;
+    
+}
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  Header     ^^^^^^^ */
+
+.restro-card{
+    height: auto;
+    width: 300px;
+    border: 1px solid teal;
+    padding: 0.3rem;
+    background-color: #000;
+    border-radius: 4px;
+
+}
+.restro-card:hover{
+    box-shadow: 10px 5px 5px orangered;
+
+}
+
+.restro-card-content{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    background-color: rgb(252, 226, 226);
+    padding: 1rem;
+    border-radius: 2px;
+    align-items: center;
+
+
+}
+
+.restro-card-img-div{
+    
+    width: 260px;
+
+    
+ }
+.restro-card-img{
+ width: 100%;
+ 
+}
+.restro-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.restro-name{
+
+}
+.restro-dishesh{
+
+}
+.restro-time-rating{
+
+}
+.testro-time{
+
+}
+.restro-rating{
+
+}
+.restro-knowmore{
+    
+}
+.restro-knowmore-btn{
+
+}
+
+
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^ RestroCard */
+
+.body{
+    margin: 8px;
+}
+
+serch-bar{
+
+}
+
+restro-container {
+  display: flex;
+  flex-direction: row;
+}
+
+restro-cards {
+
+}
+
+
+
+/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^  Body     ^^^^^^^ */
+
+
+
