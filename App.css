@@ -120,16 +120,16 @@
     margin: 8px;
 }
 
-serch-bar{
+.serch-bar{
 
 }
 
-restro-container {
+.restro-container {
   display: flex;
   flex-direction: row;
 }
 
-restro-cards {
+.restro-cards {
 
 }
 
