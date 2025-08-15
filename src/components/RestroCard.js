@@ -1,8 +1,9 @@
 import { cloudinaryUrl } from "../utils/constant";
 
 const RestroCard = (propObj) => {
+  console.log("propobj", propObj);
   const { name, avgRating, cloudinaryImageId, cuisines, sla } =
-    propObj?.restros?.card?.card?.info;
+    propObj?.restros?.info;
   return (
     <div className="restro-card">
       <div className="restro-card-content">
