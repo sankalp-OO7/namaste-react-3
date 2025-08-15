@@ -1,8 +1,7 @@
 import { cloudinaryUrl } from "../utils/constant";
 
 const RestroCard = (propObj) => {
-  console.log(propObj?.restros?.card?.card?.info);
-  const { name, avgRating, cloudinaryImageId } =
+  const { name, avgRating, cloudinaryImageId, cuisines, sla } =
     propObj?.restros?.card?.card?.info;
   return (
     <div className="restro-card">
@@ -20,12 +19,10 @@ const RestroCard = (propObj) => {
           </div>
           <div className="restro-dishesh">
             {" "}
-            <h4>{propObj?.restros?.card?.card?.info?.cuisines.join(",")}</h4>
+            <h4>{cuisines.join(",")}</h4>
           </div>
           <div className="restro-time-rating">
-            <div className="testro-time">
-              {propObj?.restros?.card?.card?.info?.sla?.deliveryTime}
-            </div>
+            <div className="testro-time">{sla?.deliveryTime} Min</div>
             <div className="restro-rating">🌟 &nbsp; {avgRating}</div>
           </div>
           <div className="restro-knowmore">

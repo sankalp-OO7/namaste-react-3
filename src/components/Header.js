@@ -1,5 +1,6 @@
 import React from "react";
 import { logoUrl } from "../utils/constant";
+import { useState } from "react";
 
 const Header = () => (
   <div className="header">
@@ -11,7 +12,7 @@ const Header = () => (
         <li>Home</li>
         <li>About</li>
         <li>Contact</li>
-        <li>Cart</li>
+        <li>Cart </li>
       </ul>
     </div>
   </div>

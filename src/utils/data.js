@@ -2,130 +2,18 @@ const restrolist = [
   {
     card: {
       card: {
-        "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
         info: {
           id: "123774",
           name: "Sagar Hotel",
           cloudinaryImageId: "cefi5klyf6niootxq9vz",
-          locality: "Bhagya Nagar \n",
-          areaName: "Bmc Nanded",
-          costForTwo: "₹200 for two",
+
           cuisines: ["Biryani", "Chinese"],
           avgRating: 4,
-          parentId: "174476",
-          avgRatingString: "4.0",
-          totalRatingsString: "2.5K+",
+
           sla: {
             deliveryTime: 13,
-            lastMileTravel: 0.6,
-            serviceability: "SERVICEABLE",
-            slaString: "10-15 mins",
-            lastMileTravelString: "0.6 km",
-            iconType: "ICON_TYPE_EMPTY",
           },
-          availability: {
-            nextCloseTime: "2025-08-12 22:15:00",
-            opened: true,
-          },
-          badges: {
-            imageBadges: [
-              {
-                imageId: "android/static-assets/icons/big_rx.png",
-                description: "bolt!",
-              },
-              {
-                imageId:
-                  "Ratnesh_Badges/Rx_Awards_2025/_Milestone%20Restaurants.png",
-                description: "Delivery!",
-              },
-            ],
-            textExtendedBadges: [
-              {
-                iconId: "Akash/Listing%20badge.png",
-                shortDescription: "Price Match Promise",
-                fontColor: "#7E808C",
-              },
-            ],
-          },
-          isOpen: true,
-          type: "F",
-          badgesV2: {
-            entityBadges: {
-              textBased: {},
-              imageBased: {
-                badgeObject: [
-                  {
-                    attributes: {
-                      imageId: "android/static-assets/icons/big_rx.png",
-                      description: "bolt!",
-                    },
-                  },
-                  {
-                    attributes: {
-                      imageId:
-                        "Ratnesh_Badges/Rx_Awards_2025/_Milestone%20Restaurants.png",
-                      description: "Delivery!",
-                    },
-                  },
-                ],
-              },
-              textExtendedBadges: {
-                badgeObject: [
-                  {
-                    attributes: {
-                      description: "",
-                      shortDescription: "Price Match Promise",
-                      fontColor: "#7E808C",
-                      iconId: "Akash/Listing%20badge.png",
-                    },
-                  },
-                ],
-              },
-            },
-          },
-          aggregatedDiscountInfoV3: {
-            header: "50% OFF",
-            subHeader: "UPTO ₹100",
-            logoCtx: {
-              text: "BENEFITS",
-            },
-          },
-          orderabilityCommunication: {
-            title: {},
-            subTitle: {},
-            message: {},
-            customIcon: {},
-            commsStyling: {},
-          },
-          differentiatedUi: {
-            displayType: "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
-            differentiatedUiMediaDetails: {
-              mediaType: "ADS_MEDIA_ENUM_IMAGE",
-              lottie: {},
-              video: {},
-            },
-          },
-          reviewsSummary: {},
-          displayType: "RESTAURANT_DISPLAY_TYPE_DEFAULT",
-          restaurantOfferPresentationInfo: {},
-          externalRatings: {
-            aggregatedRating: {
-              rating: "--",
-            },
-          },
-          ratingsDisplayPreference: "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY",
         },
-        analytics: {},
-        cta: {
-          link: "swiggy://menu?restaurant_id=123774&source=collection&query=Biryani",
-          text: "RESTAURANT_MENU",
-          type: "DEEPLINK",
-        },
-        widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food",
-      },
-      relevance: {
-        type: "RELEVANCE_TYPE_ON_MENU_RETURN",
-        sectionId: "MENU_RETURN_FOOD",
       },
     },
   },
