@@ -1,33 +1,76 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { cloudinaryUrl, logoUrl } from "./utils/constant";
-
-/* Components of Our Food-Order App
- * Header
- * - Logo
- * - Nav Items
- * Body
- * - Search Bar
- * - Restaurant-Container
- *  - Restaurant-Card
- *    - Img
- *    - Name of Res, Star Rating, cuisine, delivery time.
- * Footer
- * - Copyright
- * - Links
- * - Address
- * - Contact
- */
+import About from "./About.js";
+import Contact from "./Contact.js";
+import Cart from "./Cart.js";
+import Error from "./Error.js";
+import Restro from "./Restro.js";
+const Grocery = lazy(() => {
+  return import("./Grocery.js");
+});
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+} from "react-router-dom";
+import { lazy, Suspense } from "react";
 
 const App = () => (
   <div className="App">
     <Header />
-    <Body />
+    <Outlet />
   </div>
 );
 
-const j = 2;
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/grocery",
+        element: <Grocery />,
+      },
+      {
+        path: "about",
+        element: <About name={"baburao"} />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
+      },
+      {
+        path: "restro/:resid",
+        element: <Restro />,
+      },
+    ],
+  },
+]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <RouterProvider router={router} />
+
+  // <BrowserRouter>
+  //   <Routes>
+  //     <Route path="/" element={<App />} />
+  //     <Route path="/about" element={<About />} />
+  //     <Route path="/contact" element={<Contact />} />
+  //     <Route path="/cart" element={<Cart />} />
+  //   </Routes>
+  // </BrowserRouter>
+);

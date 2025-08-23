@@ -2,22 +2,24 @@ import React from "react";
 import RestroCard from "./RestroCard";
 import restrolist from "../utils/data";
 import { useEffect, useState } from "react";
-import ShimmerLoader from "./loader";
+import ShimmerLoader from "./Loader";
+import { Link, NavLink } from "react-router-dom";
+import { swiggy, serverswiggy } from "../utils/constant";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   const [mainList, setMainList] = useState([]);
   const [mainListCopy, setMainListCopy] = useState([]);
   const [searchText, setSearchText] = useState("");
-
+  const status = useOnlineStatus();
   const geter = async function geter() {
     try {
-      const res = await fetch(
-        "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=19.1837371&lng=77.2983373&carousel=true&third_party_vendor=1"
-      );
+      const res = await fetch(serverswiggy || swiggy);
       const data = await res.json();
+
       const list =
         data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
+          ?.restaurants ?? [];
 
       setMainList(list);
       setMainListCopy(list);
@@ -32,52 +34,66 @@ const Body = () => {
   useEffect(() => {
     geter();
   }, []);
-  return mainListCopy.length === 0 ? (
-    <ShimmerLoader />
-  ) : (
+  const search = () => {
+    const searchResult = mainListCopy.filter((element) => {
+      return element.info.name.toUpperCase().includes(searchText.toUpperCase());
+    });
+    setMainList(searchResult);
+  };
+  const rating4 = () => {
+    const rating4 = mainListCopy.filter((element) => {
+      return element.info.avgRating > 4;
+    });
+    setMainList(rating4);
+  };
+  if (status === false) return <h1>Looks like you are offline</h1>;
+  console.log(mainList);
+  return (
     <div className="body">
-      <div className="serch-bar"></div>
-      <div className="filters">
-        <input type="text" onChange={(e) => setSearchText(e.target.value)} />
+      <div className="flex justify-center align-middle items-center gap-3 p-5">
+        <input
+          type="text"
+          className="border-amber-50 bg-amber-100 border-b-2 border-b-blue-950 p-2 rounded-lg "
+          onChange={(e) => setSearchText(e.target.value)}
+        />
         <button
-          onClick={() => {
-            const searchResult = mainListCopy.filter((element) => {
-              return element.info.name
-                .toUpperCase()
-                .includes(searchText.toUpperCase());
-            });
-            setMainList(searchResult);
-          }}
+          className="p-4 bg-green-300 rounded-2xl cursor-pointer hover:bg-green-500 hover:text-white"
+          onClick={search}
         >
           Search
         </button>
         <button
-          className="filterbutton"
-          onClick={() => {
-            const rating4 = mainListCopy.filter((element) => {
-              return element.info.avgRating > 4;
-            });
-            setMainList(rating4);
-          }}
+          className="p-[16px] bg-yellow-300 rounded-2xl cursor-pointer hover:bg-yellow-500 hover:text-white hover:font-bold"
+          onClick={rating4}
         >
           4+ rating
         </button>
 
         <button
-          className="reset"
-          onClick={() => {
-            setMainList(mainListCopy);
-          }}
+          className="p-[16px] bg-red-300 rounded-2xl cursor-pointer hover:bg-red-500 hover:text-white"
+          onClick={() => setMainList(mainListCopy)}
         >
           Reset
         </button>
+        <button>
+          {status ? (
+            <h3 className="p-[16px] bg-green-800">Online</h3>
+          ) : (
+            <h3 className="p-4 bg-red-800">Offline</h3>
+          )}
+        </button>
       </div>
-      <div className="restro-container">
-        {mainList.map((element) => (
-          <RestroCard restros={element} key={element?.info?.id} />
-        ))}
-      </div>
-      {console.log(mainList)}
+      {mainListCopy.length === 0 ? (
+        <ShimmerLoader />
+      ) : (
+        <div className="flex flex-wrap flex-row gap-4 justify-center align-middle ">
+          {mainList.map((element) => (
+            <NavLink key={element?.info?.id} to={"restro/" + element?.info?.id}>
+              <RestroCard restros={element} />
+            </NavLink>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
