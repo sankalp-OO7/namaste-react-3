@@ -1,9 +1,8 @@
 import React from "react";
-import RestroCard from "./RestroCard";
-import restrolist from "../utils/data";
+import RestroCard, { PramotedRestroCard } from "./RestroCard";
 import { useEffect, useState } from "react";
 import ShimmerLoader from "./Loader";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { swiggy, serverswiggy } from "../utils/constant";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -12,6 +11,7 @@ const Body = () => {
   const [mainListCopy, setMainListCopy] = useState([]);
   const [searchText, setSearchText] = useState("");
   const status = useOnlineStatus();
+  const VegRestro = PramotedRestroCard(RestroCard);
   const geter = async function geter() {
     try {
       const res = await fetch(serverswiggy || swiggy);
@@ -89,7 +89,11 @@ const Body = () => {
         <div className="flex flex-wrap flex-row gap-4 justify-center align-middle ">
           {mainList.map((element) => (
             <NavLink key={element?.info?.id} to={"restro/" + element?.info?.id}>
-              <RestroCard restros={element} />
+              {element?.info?.veg ? (
+                <VegRestro restros={element} />
+              ) : (
+                <RestroCard restros={element} />
+              )}
             </NavLink>
           ))}
         </div>

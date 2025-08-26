@@ -32,3 +32,21 @@ const RestroCard = (propObj) => {
 };
 
 export default RestroCard;
+
+export const PramotedRestroCard = (RestroCard) => {
+  return (x) => {
+    {
+      console.log("x", x);
+    }
+    return (
+      <>
+        <div>
+          <div className="absolute bg-green-400 p-1 rounded-lg m-2 shadow-lg shadow-yellow-950">
+            <h3 className="font-bold text-sm">VEG</h3>
+          </div>
+          <RestroCard {...x} />
+        </div>
+      </>
+    );
+  };
+};
