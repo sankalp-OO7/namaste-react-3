@@ -7,7 +7,7 @@ import useRestroMenu from "./utils/useRestroMenu";
 export default function Restro() {
   const { resid } = useParams();
   const restroData = useRestroMenu(resid);
-  console.log(restroData);
+  console.log("restrodata", restroData);
 
   return restroData.length === 0 ? (
     <Loader />

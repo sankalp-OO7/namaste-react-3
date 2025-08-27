@@ -7,7 +7,7 @@ import Contact from "./Contact.js";
 import Cart from "./Cart.js";
 import Error from "./Error.js";
 import Restro from "./Restro.js";
-import loader from "./components/Loader.js";
+import Loader from "./components/Loader.js";
 const Grocery = lazy(() => {
   return import("./Grocery.js");
 });
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       {
         path: "/grocery",
         element: (
-          <Suspense fallback={<loader />}>
+          <Suspense fallback={<Loader />}>
             {" "}
             <Grocery></Grocery>
           </Suspense>
