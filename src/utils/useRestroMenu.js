@@ -12,12 +12,10 @@ const useRestroMenu = (resid) => {
     );
     let data = await res.json();
     console.log("data orignal", data);
-    data =
-      data?.data?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]
-        ?.card?.card?.itemCards ?? [];
-    subData =
-      data.data.cards[5].groupedCard.cardGroupMap.REGULAR.cards[1].card.card
-        .itemCards;
+    // data =
+    //   data?.data?.cards?.[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]
+    //     ?.card?.card?.itemCards ?? [];
+
     console.log("data", data);
     setResInfo(data);
   };
