@@ -1,9 +1,15 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 export default function Dishesh({ item }) {
-  console.log("item", item);
+  // console.log("item", item);
   const info = item.card.info;
 
+  const dispatch = useDispatch();
+  const func = () => {
+    dispatch(addItem(item));
+  };
   return (
     <div>
       <div
@@ -31,7 +37,10 @@ export default function Dishesh({ item }) {
             alt={info.name}
             className="w-full h-full object-cover"
           />
-          <button className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-green-500 text-white font-semibold   px-1 rounded-md shadow-lg hover:bg-green-700 transition-colors duration-300">
+          <button
+            onClick={() => func()}
+            className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-green-500 text-white font-semibold   px-1 rounded-md shadow-lg hover:bg-green-700 transition-colors duration-300"
+          >
             Add +
           </button>
         </div>

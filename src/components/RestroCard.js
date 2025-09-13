@@ -1,7 +1,7 @@
 import { cloudinaryUrl } from "../utils/constant";
 
 const RestroCard = (propObj) => {
-  console.log("propobj", propObj);
+  // console.log("propobj", propObj);
   const { name, avgRating, cloudinaryImageId, cuisines, sla } =
     propObj?.restros?.info;
   return (
@@ -33,18 +33,15 @@ const RestroCard = (propObj) => {
 
 export default RestroCard;
 
-export const PramotedRestroCard = (RestroCard) => {
+export const PramotedRestroCard = (A) => {
   return (x) => {
-    {
-      console.log("x", x);
-    }
     return (
       <>
         <div>
           <div className="absolute bg-green-400 p-1 rounded-lg m-2 shadow-lg shadow-yellow-950">
             <h3 className="font-bold text-sm">VEG</h3>
           </div>
-          <RestroCard {...x} />
+          <A {...x} />
         </div>
       </>
     );

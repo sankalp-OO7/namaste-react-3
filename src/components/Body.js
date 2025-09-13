@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import RestroCard, { PramotedRestroCard } from "./RestroCard";
 import { useEffect, useState } from "react";
 import ShimmerLoader from "./Loader";
 import { NavLink } from "react-router-dom";
 import { swiggy, serverswiggy } from "../utils/constant";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import userContext from "../utils/UserContext";
 
 const Body = () => {
   const [mainList, setMainList] = useState([]);
@@ -34,6 +35,7 @@ const Body = () => {
   useEffect(() => {
     geter();
   }, []);
+  const { setUserName, loggedInUser } = useContext(userContext);
   const search = () => {
     const searchResult = mainListCopy.filter((element) => {
       return element.info.name.toUpperCase().includes(searchText.toUpperCase());
@@ -53,8 +55,16 @@ const Body = () => {
       <div className="flex justify-center align-middle items-center gap-3 p-5">
         <input
           type="text"
+          value={loggedInUser}
           className="border-amber-50 bg-amber-100 border-b-2 border-b-blue-950 p-2 rounded-lg "
-          onChange={(e) => setSearchText(e.target.value)}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+        <input
+          type="text"
+          className="border-amber-50 bg-amber-100 border-b-2 border-b-blue-950 p-2 rounded-lg "
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
         />
         <button
           className="p-4 bg-green-300 rounded-2xl cursor-pointer hover:bg-green-500 hover:text-white"

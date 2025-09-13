@@ -3,12 +3,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loader from "./components/Loader";
 import useRestroMenu from "./utils/useRestroMenu";
+import Dishesh0 from "./components/Dishesh0.js";
 import Dishesh from "./components/Dishesh.js";
 
 export default function Restro() {
   const { resid } = useParams();
   const restroData = useRestroMenu(resid);
-  console.log("restrodata", restroData);
   const name = restroData?.data?.cards[0]?.card?.card?.text;
   const realdata =
     restroData?.data?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards ?? [];
@@ -24,13 +24,12 @@ export default function Restro() {
     );
   });
 
-  console.log("data", data);
-  console.log(name, realdata);
   return restroData.length === 0 ? (
     <Loader />
   ) : (
     <>
-      <h1 className="text-4xl sm:text-6xl font-extrabold text-center text-gray-800 my-8">
+      <Dishesh0 name={name} data={data} />
+      {/* <h1 className="text-4xl sm:text-6xl font-extrabold text-center text-gray-800 my-8">
         {name || "Restro Name"}
       </h1>
       <div className="max-w-4xl mx-auto">
@@ -40,9 +39,9 @@ export default function Restro() {
               key={category.card.card.categoryId}
               className="mb-8 p-6 sm:p-8 bg-white rounded-xl shadow-lg border border-gray-200"
             >
-              <div className="text-3xl sm:text-4xl font-light text-gray-900 mb-6 border-b border-gray-300 pb-4">
+              <div className=" flex justify-between cursor-pointer text-3xl sm:text-4xl font-light text-gray-900 mb-6 border-b border-gray-300 pb-4">
                 <p> {category.card.card.title}</p>
-                <span></span>
+                <p> ⬇</p>
               </div>
               <div className="space-y-6">
                 {category.card.card.itemCards?.map((item) => {
@@ -53,7 +52,7 @@ export default function Restro() {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </>
   );
 }
